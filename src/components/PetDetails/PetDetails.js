@@ -1,26 +1,30 @@
 import { useEffect, useState } from "react";
-import * as petsService from "../../services/petService";
-const PetDetails = ({ match }) => {
-  let [pet, setPet] = useState({});
+import petService from '../../services/petService'
+const PetDetails = ({ 
+    match 
+}) => {
+  let[pet, setPet] = useState({});
+
   useEffect(() => {
-    petsService.getOne(match.params.petId).then((res) => setPet(res));
+    petService.getOne(match.params.petId).then(res =>  setPet(res));
   }, []);
+  console.log( pet)
   return (
-    <section class="detailsOtherPet">
+      <section className="detailsOtherPet">
       <h3>{pet.name}</h3>
       <p>
         Pet counter: {pet.likes}
         <a href="#">
-          <button class="button">
-            <i class="fas fa-heart"></i>
+          <button className="button">
+            <i className="fas fa-heart"></i>
             Pet
           </button>
         </a>
       </p>
-      <p class="img">
+      <p className="img">
         <img src={pet.imageURL} />
       </p>
-      <p class="description">{pet.description}</p>
+      <p className="description">{pet.description}</p>
     </section>
   );
 };

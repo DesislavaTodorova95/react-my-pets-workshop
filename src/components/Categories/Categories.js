@@ -1,7 +1,7 @@
 import { Component } from "react";
 import CategoryNavigation from "./CategoryNavigation/CategoryNavigation";
 import Pet from "../Pet/Pet";
-import * as petsService from "../../services/petService";
+import petService from "../../services/petService";
 class Categories extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +12,7 @@ class Categories extends Component {
     };
   }
   componentDidMount() {
-    petsService.getAll().then((res) => this.setState({ pets: res }));
+    petService.getAll().then((res) => this.setState({ pets: res }));
   }
   componentDidUpdate(prevProps) {
     const category = this.props.match.params.category;
@@ -20,7 +20,7 @@ class Categories extends Component {
     if (prevProps.match.params.category == category) {
       return;
     }
-    petsService.getAll(category).then((res) => {
+    petService.getAll(category).then((res) => {
       this.setState({ pets: res, currentCategory: category });
     });
   }
