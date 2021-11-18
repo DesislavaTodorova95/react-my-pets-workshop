@@ -1,23 +1,30 @@
+import { Link } from "react-router-dom";
+
 const Pet = ({
-    
+  id,
+  name, 
+  description,
+  imageURL,
+  category,
+  likes 
 })=>{
 return(<li className="otherPet">
-<h3>Name: Kiro</h3>
-<p>Category: Dog</p>
+<h3>Name: {name}</h3>
+<p>Category: {category}</p>
 <p className="img">
-  <img src="http://www.stickpng.com/assets/images/580b57fbd9996e24bc43bbde.png" />
+  <img src={imageURL} />
 </p>
-<p className="description">This is my dog Kiro</p>
+<p className="description">{description}</p>
 <div className="pet-info">
-  <a href="#">
+  <Link to="">
     <button className="button">
       <i className="fas fa-heart"></i> Pet
     </button>
-  </a>
-  <a href="#">
+  </Link>
+  <Link to={`/pets/details/${id}`}>
     <button className="button">Details</button>
-  </a>
-  <i className="fas fa-heart"></i> <span> 4</span>
+  </Link>
+  <i className="fas fa-heart"></i> <span>{likes}</span>
 </div>
 </li>)
 }
