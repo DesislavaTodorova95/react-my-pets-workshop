@@ -19,16 +19,32 @@ const create = (name, description, imageURL, category) => {
     description,
     imageURL,
     category,
+    likes: 0,
   };
+
   return fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(pet),
   });
 };
+const update = (petId, pet)=>{
+ return  fetch(`${url}/${petId}`,{
+    method: 'PUT',
+    
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(pet),
+  })
+}
+// const pet = (petId)=>{
+//   return fetch(`${url}/${petId}`, {method: 'PUT'}) 
+// }
 const petServices = {
   getOne,
   getAll,
   create,
+  update
 };
 export default petServices;
