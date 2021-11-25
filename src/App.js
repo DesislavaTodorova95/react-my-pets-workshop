@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Categories from "./components/Categories/Categories";
 import PetDetails from './components/PetDetails/PetDetails'
 import "./App.css";
+import CreatePet from "./components/CreatePet/CreatePet";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         
         <Route path="/categories/:category" component={Categories}/>
         <Route path="/pets/details/:petId" component={PetDetails}/>
+        <Route path="/pets/create" component={CreatePet}/>
       </Switch>
       <h1>Hello World</h1>
       <Footer />
